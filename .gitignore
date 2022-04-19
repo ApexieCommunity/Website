@@ -1,0 +1,7 @@
+node_modules/
+/service-worker.js
+/index.html
+/assets/
+/workbox-*.js
+/bundle.js
+/manifest.json

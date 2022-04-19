@@ -1,0 +1,36 @@
+{
+    "name": "Apexie's Home",
+    "description": "The official Apexie Community app. Here you can find blog posts, news, downloadable content, and more.",
+    "screenshots": [],
+    "short_name": "Apexie",
+    "icons": [
+        {
+            "src": "assets/img/pwa/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/img/pwa/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "assets/img/pwa/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/img/pwa/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#23e86b",
+    "theme_color": "#23e86b"
+}
