@@ -5,6 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d .",
     "dev": "webpack serve --open --mode=development",
     "start": "http-server -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.181",
     "copy-webpack-plugin": "^10.2.4",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.0",
     "ts-loader": "^9.2.8",
