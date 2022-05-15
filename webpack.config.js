@@ -24,9 +24,9 @@ module.exports = {
     output: {
         filename: ({runtime}) => {
             if (runtime === 'sw') {
-                return '[name].js';
+                return 'dist/[name].js';
             }
-            return 'bundle.js';
+            return 'dist/bundle.js';
         },
         path: path.resolve(__dirname)
     },
@@ -36,9 +36,9 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "src/index.html", to: "index.html" },
-                { from: "src/manifest.json", to: "manifest.json" },
-                { from: "src/assets", to: "assets" }
+                { from: "src/index.html", to: "dist/index.html" },
+                { from: "src/manifest.json", to: "dist/manifest.json" },
+                { from: "src/assets", to: "dist/assets" }
             ]
         })
     ]
