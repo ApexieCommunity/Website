@@ -40,9 +40,10 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "src/index.html", to: "dist/index.html" },
-                { from: "src/manifest.json", to: "dist/manifest.json" },
-                { from: "src/assets", to: "dist/assets" }
+                { from: "src/index.html", to: "index.html" },
+                { from: "src/manifest.json", to: "manifest.json" },
+                { from: "src/CNAME", to: "CNAME" },
+                { from: "src/assets", to: "assets" }
             ]
         }),
         new CleanWebpackPlugin()
