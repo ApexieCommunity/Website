@@ -1,0 +1,236 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+    <title>Apexie's Home</title>
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple web app capability and images -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2048-2732.jpg"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2732-2048.jpg"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1668-2388.jpg"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2388-1668.jpg"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1536-2048.jpg"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2048-1536.jpg"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1668-2224.jpg"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2224-1668.jpg"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1620-2160.jpg"
+        media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2160-1620.jpg"
+        media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1284-2778.jpg"
+        media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2778-1284.jpg"
+        media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1170-2532.jpg"
+        media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2532-1170.jpg"
+        media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1125-2436.jpg"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2436-1125.jpg"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1242-2688.jpg"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2688-1242.jpg"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-828-1792.jpg"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1792-828.jpg"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1242-2208.jpg"
+        media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-2208-1242.jpg"
+        media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-750-1334.jpg"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1334-750.jpg"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-640-1136.jpg"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="assets/img/pwa/apple-splash-1136-640.jpg"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+
+    <!-- Main style + Bootstrap -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Main website structure (thanks to Bootstrap) -->
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="assets/img/favicon.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                Apexie's Home
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/ApexieCommunity">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://dsc.gg/apexie">Discord</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="https://video.arcade.apexie.eu">Video to Arcade</a></li>
+                            <li><a class="dropdown-item" href="#osustream">osu!stream revived</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item disabled" href="#">Coming soon...</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Coming soon...</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Showcase -->
+    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1>Join the <span class="text-warning"> best community ever </span></h1>
+                    <p class="lead my-4">
+                        We want to deliver the best experiences to you and
+                        create the best place to find new friends and play with your friends.
+                    </p>
+                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#fun">
+                        Start the fun
+                    </button>
+                </div>
+                <img class="img-fluid w-50 d-none d-sm-block" width="477" height="517" src="assets/img/gaming.png"
+                    alt="" />
+            </div>
+        </div>
+    </section>
+
+    <section class="p-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-controller"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Gaming</h3>
+                            <p class="card-text">
+                                Our community mostly plays Minecraft, but we like to play other games too.
+                                You can bring new games to life in our community.
+                            </p>
+                            <a href="https://dsc.gg/apexie" class="btn btn-primary">Join the fun</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-chat-left-dots"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Chatting</h3>
+                            <p class="card-text">
+                                We also have fun by chatting with other people
+                                in the community. You can talk about anything you want (except, you know...).
+                            </p>
+                            <a href="https://dsc.gg/apexie" class="btn btn-primary">Chat with us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Coding</h3>
+                            <p class="card-text">
+                                We love coding and also open source projects, and that's why we have a
+                                GitHub page where we share most of our projects with you.
+                            </p>
+                            <a href="https://github.com/ApexieCommunity" class="btn btn-primary">Contribute</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+        <div class="container">
+            <p class="lead">Copyright &copy; 2022 Apexie Community</p>
+
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="fun" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="funLabel">Start the fun</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">These are the main places where we have fun:</p>
+                    <!-- Clickable Discord button -->
+                    <a href="https://dsc.gg/apexie" class="btn btn-dark btn-lg">
+                        <i class="bi bi-discord"></i>
+                        Discord
+                    </a>
+                    <a href="https://github.com/ApexieCommunity" class="btn btn-dark btn-lg">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main script + Other JS libraries -->
+    <script src="bundle.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
