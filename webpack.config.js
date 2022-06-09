@@ -1,5 +1,6 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
     mode: "production",
@@ -9,6 +10,9 @@ module.exports = {
     },
     devServer: {
         watchFiles: ["src/**/*"],
+        static: {
+            directory: path.resolve(__dirname, "src")
+        },
         port: 3000
     },
     module: {
@@ -24,11 +28,11 @@ module.exports = {
     output: {
         filename: ({runtime}) => {
             if (runtime === 'sw') {
-                return 'dist/[name].js';
+                return '[name].js';
             }
-            return 'dist/bundle.js';
+            return 'bundle.js';
         },
-        path: path.resolve(__dirname)
+        path: path.resolve(__dirname + "/dist")
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"]
@@ -40,6 +44,7 @@ module.exports = {
                 { from: "src/manifest.json", to: "dist/manifest.json" },
                 { from: "src/assets", to: "dist/assets" }
             ]
-        })
+        }),
+        new CleanWebpackPlugin()
     ]
 }

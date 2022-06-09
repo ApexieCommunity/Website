@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/ApexieCommunity/Website#readme",
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "@types/lodash": "^4.14.181",
     "copy-webpack-plugin": "^10.2.4",
     "gh-pages": "^4.0.0",
@@ -41,7 +42,9 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "jquery": "^3.6.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "three": "^0.140.2"
   }
 }
