@@ -42,7 +42,7 @@ module.exports = {
             patterns: [
                 { from: "src/index.html", to: "index.html" },
                 { from: "src/manifest.json", to: "manifest.json" },
-                { from: "src/CNAME", to: "CNAME" },
+                { from: "src/CNAME", to: "." },
                 { from: "src/assets", to: "assets" }
             ]
         }),
