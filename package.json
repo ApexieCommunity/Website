@@ -42,7 +42,9 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "clean-webpack-plugin": "^4.0.0",
+    "console-browserify": "^1.2.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "three": "^0.140.2"
