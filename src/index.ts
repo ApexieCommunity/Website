@@ -36,7 +36,7 @@ registerServiceWorker();
 let isLoggedIn: boolean = false;
 
 const loginButton = document.getElementById("login_button")!;
-const discordUserData = localStorage.getItem("user");
+const discordUserData = localStorage.getItem("apexie-discord-user");
 
 const getData = async () => {
     // Use the access token from the parameters of the URL
@@ -51,7 +51,7 @@ const getData = async () => {
         // Check if access token is valid
         if (user.status === 200) {
             // Save the user's data to localStorage
-            localStorage.setItem("user", JSON.stringify(user.data));
+            localStorage.setItem("apexie-discord-user", JSON.stringify(user.data));
             // Redirect to the main page
             window.location.href = "/";
 
