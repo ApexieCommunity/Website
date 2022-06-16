@@ -36,12 +36,16 @@ registerServiceWorker();
 let isLoggedIn: boolean = false;
 
 const loginButton = document.getElementById("login_button")!;
-const discordUserData = localStorage.getItem("apexie-discord-user");
+const discordUserData = localStorage.getItem("apexie-discord-login");
+const lastTimeUserLoggedIn = localStorage.getItem("apexie-discord-login-time");
+const sessionExpiresIn = localStorage.getItem("apexie-discord-login-expires");
 
 const getData = async () => {
     // Use the access token from the parameters of the URL
     const accessToken = new URLSearchParams(window.location.search).get("access_token");
+    const sessionExpiresIn = new URLSearchParams(window.location.search).get("expires_in");
     if (accessToken) {
+        if (!sessionExpiresIn) return;
         // Get the user's data from Discord
         const user = await axios.get(`https://discord.com/api/users/@me`, {
             headers: {
@@ -51,7 +55,9 @@ const getData = async () => {
         // Check if access token is valid
         if (user.status === 200) {
             // Save the user's data to localStorage
-            localStorage.setItem("apexie-discord-user", JSON.stringify(user.data));
+            localStorage.setItem("apexie-discord-login", JSON.stringify(user.data));
+            localStorage.setItem("apexie-discord-login-time", new Date().toISOString());
+            localStorage.setItem("apexie-discord-login-expires", sessionExpiresIn);
             // Redirect to the main page
             window.location.href = "/";
 
@@ -65,8 +71,22 @@ const getData = async () => {
 }
 
 if (discordUserData) {
-    loginButton.textContent = "Hello, " + JSON.parse(discordUserData).username;
-    isLoggedIn = true;
+    // If session expired, delete the data
+    if (lastTimeUserLoggedIn && sessionExpiresIn) {
+        const lastTimeUserLoggedInDate = new Date(lastTimeUserLoggedIn);
+        // Session expires in is in seconds, convert to new Date() format
+        const sessionExpiresInDate = new Date(lastTimeUserLoggedInDate.getTime() + parseInt(sessionExpiresIn) * 1000);
+        if (lastTimeUserLoggedInDate.getTime() + sessionExpiresInDate.getTime() < new Date().getTime()) {
+            localStorage.removeItem("apexie-discord-login");
+            localStorage.removeItem("apexie-discord-login-time");
+            localStorage.removeItem("apexie-discord-login-expires");
+            // Redirect to the main page
+            window.location.href = "/";
+        } else {
+            loginButton.textContent = "Hello, " + JSON.parse(discordUserData).username;
+            isLoggedIn = true;
+        }
+    }
 } else {
     getData();
 }
