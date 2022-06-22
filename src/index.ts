@@ -1,6 +1,7 @@
 // Needed libraries
 import _ from "lodash";
 import axios from "axios";
+import { Modal } from "bootstrap";
 
 // Warning for users who open the DevTools console of the website
 console.log("%cWARNING!!!" +
@@ -35,10 +36,15 @@ registerServiceWorker();
 
 let isLoggedIn: boolean = false;
 
+const loginLink = "https://discord.com/api/oauth2/authorize?client_id=985822727590010923&redirect_uri=https%3A%2F%2Fapi.plenusbot.xyz%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify";
+
 const loginButton = document.getElementById("login_button")!;
-const discordUserData = localStorage.getItem("apexie-discord-login");
-const lastTimeUserLoggedIn = localStorage.getItem("apexie-discord-login-time");
-const sessionExpiresIn = localStorage.getItem("apexie-discord-login-expires");
+const discordUserData = localStorage.getItem("apexie-discord-login")!;
+const lastTimeUserLoggedIn = localStorage.getItem("apexie-discord-login-time")!;
+const sessionExpiresIn = localStorage.getItem("apexie-discord-login-expires")!;
+const sessionExpired = localStorage.getItem("apexie-discord-login-expired")!;
+
+var sessionExpiredModal = new Modal(document.getElementById("sessionexpired")!);
 
 const getData = async () => {
     // Use the access token from the parameters of the URL
@@ -58,6 +64,7 @@ const getData = async () => {
             localStorage.setItem("apexie-discord-login", JSON.stringify(user.data));
             localStorage.setItem("apexie-discord-login-time", new Date().toISOString());
             localStorage.setItem("apexie-discord-login-expires", sessionExpiresIn);
+            localStorage.setItem("apexie-discord-login-expired", "false");
             // Redirect to the main page
             window.location.href = "/";
 
@@ -81,6 +88,8 @@ if (discordUserData) {
             localStorage.removeItem("apexie-discord-login");
             localStorage.removeItem("apexie-discord-login-time");
             localStorage.removeItem("apexie-discord-login-expires");
+            localStorage.setItem("apexie-discord-login-expired", "true");
+            window.location.href = "/";
         } else {
             loginButton.textContent = "Hello, " + JSON.parse(discordUserData).username;
             isLoggedIn = true;
@@ -90,6 +99,31 @@ if (discordUserData) {
     getData();
 }
 
-if (!isLoggedIn) {
-    loginButton.setAttribute("href", "https://discord.com/api/oauth2/authorize?client_id=985822727590010923&redirect_uri=https%3A%2F%2Fapi.plenusbot.xyz%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify");
+if (sessionExpired === "true") {
+    sessionExpiredModal.show();
+
+    // Get each button in the modal
+    const yesButton = document.getElementById("login-yes")!;
+    const noButton = document.getElementById("login-no")!;
+    const dontShowAgainButton = document.getElementById("login-dont-show")!;
+
+    // When the user clicks on the button, close the modal
+    yesButton.addEventListener("click", () => {
+        window.location.href = loginLink;
+    });
+    noButton.addEventListener("click", () => {
+        sessionExpiredModal.hide();
+    });
+    dontShowAgainButton.addEventListener("click", () => {
+        localStorage.setItem("apexie-discord-login-expired", "false");
+        sessionExpiredModal.hide();
+    });
 }
+
+if (!isLoggedIn) {
+    console.log("User is not logged in");
+    loginButton.setAttribute("href", loginLink);
+} else {
+    console.log(`${JSON.parse(discordUserData).username} is logged in`);
+}
+
