@@ -54,7 +54,7 @@ const getData = async () => {
         });
         // Check if access token is valid
         if (user.status === 200) {
-            // Save the user's data to localStorage
+            // Save the user's data to cookies with expiry time set to sessionExpiresIn
             localStorage.setItem("apexie-discord-login", JSON.stringify(user.data));
             localStorage.setItem("apexie-discord-login-time", new Date().toISOString());
             localStorage.setItem("apexie-discord-login-expires", sessionExpiresIn);
@@ -76,12 +76,11 @@ if (discordUserData) {
         const lastTimeUserLoggedInDate = new Date(lastTimeUserLoggedIn);
         // Session expires in is in seconds, convert to new Date() format
         const sessionExpiresInDate = new Date(lastTimeUserLoggedInDate.getTime() + parseInt(sessionExpiresIn) * 1000);
-        if (lastTimeUserLoggedInDate.getTime() + sessionExpiresInDate.getTime() < new Date().getTime()) {
+        // If session expired, delete the data
+        if (sessionExpiresInDate < new Date()) {
             localStorage.removeItem("apexie-discord-login");
             localStorage.removeItem("apexie-discord-login-time");
             localStorage.removeItem("apexie-discord-login-expires");
-            // Redirect to the main page
-            window.location.href = "/";
         } else {
             loginButton.textContent = "Hello, " + JSON.parse(discordUserData).username;
             isLoggedIn = true;
