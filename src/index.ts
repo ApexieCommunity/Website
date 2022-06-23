@@ -1,7 +1,7 @@
 // Needed libraries
 import _ from "lodash";
 import axios from "axios";
-import { Modal } from "bootstrap";
+import bootstrap, { Modal } from "bootstrap";
 
 // Warning for users who open the DevTools console of the website
 console.log("%cWARNING!!!" +
