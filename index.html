@@ -75,7 +75,8 @@
 
     <!-- Main style + Bootstrap -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 </head>
 
@@ -110,11 +111,19 @@
                             Projects
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="https://video.arcade.apexie.eu">Video to Arcade</a></li>
                             <li><a class="dropdown-item" href="#osustream">osu!stream revived</a></li>
                             <li><a class="dropdown-item" href="#plenus">Plenus</a></li>
                             <li>
                                 <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">More projects &raquo;</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://video.arcade.apexie.eu">Video to
+                                            Arcade</a></li>
+                                    <li><a class="dropdown-item" href="https://poggit.pmmp.io/p/KnockbackFFA">Knock</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li><a class="dropdown-item disabled" href="#">Coming soon...</a></li>
                         </ul>
@@ -254,15 +263,18 @@
                     </p>
                     <p>
                         With Plenus, you can take your Discord server to another level. It offers features like
-                        role buttons, music, moderation, logs, and more. Plenus is also open source, that means we make money 
-                        only from donations from the <a href="https://ko-fi.com/plenus" class="link-primary">Ko-fi page</a>.
+                        role buttons, music, moderation, logs, and more. Plenus is also open source, that means we make
+                        money
+                        only from donations from the <a href="https://ko-fi.com/plenus" class="link-primary">Ko-fi
+                            page</a>.
                     </p>
                     <a href="https://plenusbot.xyz" class="btn btn-light mt-3">
                         <i class="bi bi-chevron-right"></i> Learn more
                     </a>
                 </div>
                 <div class="col-md">
-                    <img src="https://raw.githubusercontent.com/ApexieCommunity/Plenus/main/assets/logo.png" class="img-fluid" alt="" />
+                    <img src="https://raw.githubusercontent.com/ApexieCommunity/Plenus/main/assets/logo.png"
+                        class="img-fluid" alt="" />
                 </div>
             </div>
         </div>
@@ -315,7 +327,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="lead">Hi, it seems like your Discord session on this website has expired, would you like to login again?</p>
+                    <p class="lead">Hi, it seems like your Discord session on this website has expired, would you like
+                        to login again?</p>
                 </div>
                 <div class="modal-footer">
                     <!-- Yes -->
@@ -325,17 +338,46 @@
                     <!-- No -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="login-no">
                         No
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="login-dont-show">
-                        Don't show this again
-                    </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="login-dont-show">
+                            Don't show this again
+                        </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Main script + Other JS libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="bundle.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.innerWidth < 992) {
+                document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                        this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                            everysubmenu.style.display = 'none';
+                        });
+                    })
+                });
+
+                document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                    element.addEventListener('click', function (e) {
+                        let nextEl = this.nextElementSibling;
+                        if (nextEl && nextEl.classList.contains('submenu')) {
+                            e.preventDefault();
+                            if (nextEl.style.display == 'block') {
+                                nextEl.style.display = 'none';
+                            } else {
+                                nextEl.style.display = 'block';
+                            }
+
+                        }
+                    });
+                })
+            }
+        }); 
+    </script>
 </body>
 
 </html>
