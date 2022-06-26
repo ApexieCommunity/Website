@@ -126,4 +126,3 @@ if (!isLoggedIn) {
 } else {
     console.log(`${JSON.parse(discordUserData).username} is logged in`);
 }
-
