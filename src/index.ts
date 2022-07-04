@@ -51,7 +51,7 @@ const getData = async () => {
     const accessToken = new URLSearchParams(window.location.search).get("access_token")!;
     const sessionExpires = new URLSearchParams(window.location.search).get("expires_in")!;
     if (accessToken) {
-        if (!sessionExpiresIn) return;
+        if (!sessionExpires) return;
         // Get the user's data from Discord
         const user = await axios.get(`https://discord.com/api/users/@me`, {
             headers: {
@@ -124,11 +124,7 @@ if(!gdprConsent) {
 }
 
 if (sessionExpired === "true") {
-    if(showConsent) {
-        gdprConsentModal.show();
-    } else {
-        sessionExpiredModal.show();
-    }
+    sessionExpiredModal.show();
 
     // Get each button in the modal
     const yesButton = document.getElementById("login-yes")!;
