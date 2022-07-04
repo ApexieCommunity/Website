@@ -44,12 +44,12 @@ const lastTimeUserLoggedIn = localStorage.getItem("apexie-discord-login-time")!;
 const sessionExpiresIn = localStorage.getItem("apexie-discord-login-expires")!;
 const sessionExpired = localStorage.getItem("apexie-discord-login-expired")!;
 
-var sessionExpiredModal = new Modal(document.getElementById("sessionexpired")!);
+let sessionExpiredModal = new Modal(document.getElementById("sessionexpired")!);
 
 const getData = async () => {
     // Use the access token from the parameters of the URL
-    const accessToken = new URLSearchParams(window.location.search).get("access_token");
-    const sessionExpiresIn = new URLSearchParams(window.location.search).get("expires_in");
+    const accessToken = new URLSearchParams(window.location.search).get("access_token")!;
+    const sessionExpires = new URLSearchParams(window.location.search).get("expires_in")!;
     if (accessToken) {
         if (!sessionExpiresIn) return;
         // Get the user's data from Discord
@@ -63,7 +63,7 @@ const getData = async () => {
             // Save the user's data to cookies with expiry time set to sessionExpiresIn
             localStorage.setItem("apexie-discord-login", JSON.stringify(user.data));
             localStorage.setItem("apexie-discord-login-time", new Date().toISOString());
-            localStorage.setItem("apexie-discord-login-expires", sessionExpiresIn);
+            localStorage.setItem("apexie-discord-login-expires", sessionExpires);
             localStorage.setItem("apexie-discord-login-expired", "false");
             // Redirect to the main page
             window.location.href = "/";
@@ -99,6 +99,26 @@ if (discordUserData) {
     getData();
 }
 
+let gdprConsent = localStorage.getItem("apexie-gdprconsent")!;
+let gdprConsentModal = new Modal(document.getElementById("gdprconsent")!);
+
+if (!isLoggedIn) {
+    console.log("User is not logged in");
+    loginButton.setAttribute("href", loginLink);
+} else {
+    console.log(`${JSON.parse(discordUserData).username} is logged in`);
+}
+
+if(!gdprConsent) {
+    gdprConsentModal.show();
+    const gdprConsentButton = document.getElementById("gdpr-button")!;
+
+    gdprConsentButton.addEventListener("click", () => {
+        localStorage.setItem("apexie-gdprconsent", "true");
+        gdprConsentModal.hide();
+    });
+}
+
 if (sessionExpired === "true") {
     sessionExpiredModal.show();
 
@@ -118,11 +138,4 @@ if (sessionExpired === "true") {
         localStorage.setItem("apexie-discord-login-expired", "false");
         sessionExpiredModal.hide();
     });
-}
-
-if (!isLoggedIn) {
-    console.log("User is not logged in");
-    loginButton.setAttribute("href", loginLink);
-} else {
-    console.log(`${JSON.parse(discordUserData).username} is logged in`);
 }
