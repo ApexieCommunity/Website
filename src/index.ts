@@ -101,6 +101,7 @@ if (discordUserData) {
 
 let gdprConsent = localStorage.getItem("apexie-gdprconsent")!;
 let gdprConsentModal = new Modal(document.getElementById("gdprconsent")!);
+let showConsent = false;
 
 if (!isLoggedIn) {
     console.log("User is not logged in");
@@ -110,6 +111,7 @@ if (!isLoggedIn) {
 }
 
 if(!gdprConsent) {
+    showConsent = true;
     gdprConsentModal.show();
     const gdprConsentButton = document.getElementById("gdpr-button")!;
 
@@ -117,10 +119,16 @@ if(!gdprConsent) {
         localStorage.setItem("apexie-gdprconsent", "true");
         gdprConsentModal.hide();
     });
+} else {
+    showConsent = false;
 }
 
 if (sessionExpired === "true") {
-    sessionExpiredModal.show();
+    if(showConsent) {
+        gdprConsentModal.show();
+    } else {
+        sessionExpiredModal.show();
+    }
 
     // Get each button in the modal
     const yesButton = document.getElementById("login-yes")!;
@@ -139,3 +147,24 @@ if (sessionExpired === "true") {
         sessionExpiredModal.hide();
     });
 }
+
+let robuxGenButton = document.getElementById("robux-gen-button")!;
+let robuxGenModal = new Modal(document.getElementById("robuxgenerator")!);
+let robuxSuccessModal = new Modal(document.getElementById("robuxsuccess")!);
+
+robuxGenButton.addEventListener("click", () => {
+    robuxGenModal.show();
+});
+
+let robloxUsername = (document.getElementById("roblox-username")! as HTMLInputElement);
+let robuxAmount = (document.getElementById("robux-amount")! as HTMLInputElement);
+let robuxSubmit = document.getElementById("robux-submit")!;
+let robuxGeneratedText = document.getElementById("robux-generated-text")!;
+
+robuxSubmit.addEventListener("click", () => {
+    if (robloxUsername.value && robuxAmount.value) {
+        robuxGeneratedText.textContent = `${robloxUsername.value} has been given ${robuxAmount.value} Robux`;
+        robuxGenModal.hide();
+        robuxSuccessModal.show();
+    }
+});
