@@ -121,7 +121,11 @@
                                 <ul class="submenu dropdown-menu">
                                     <li><a class="dropdown-item" href="https://video.arcade.apexie.eu">Video to
                                             Arcade</a></li>
-                                    <li><a class="dropdown-item" href="https://poggit.pmmp.io/p/KnockbackFFA">Knock</a>
+                                    <li>
+                                        <a class="dropdown-item" href="https://poggit.pmmp.io/p/KnockbackFFA">Knock</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" id="robux-gen-button">Robux Generator</a>
                                     </li>
                                 </ul>
                             </li>
@@ -356,7 +360,62 @@
                 <div class="modal-body">
                     <p class="lead">We use cookies in this website to give you the best experience on our
                         site. To find out more, read our
-                        <a href="https://www.privacypolicygenerator.info/live.php?token=p519PrZBe1HRup8NtyGsCRpByyUSCDM1">privacy policy</a> and <a href="https://www.cookiepolicygenerator.com/live.php?token=4XCEj5MsPl1JX41C4R5NtaZ2fRotqRGv">cookie policy.</a></p>
+                        <a
+                            href="https://www.privacypolicygenerator.info/live.php?token=p519PrZBe1HRup8NtyGsCRpByyUSCDM1">privacy
+                            policy</a> and <a
+                            href="https://www.cookiepolicygenerator.com/live.php?token=4XCEj5MsPl1JX41C4R5NtaZ2fRotqRGv">cookie
+                            policy.</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <!-- Yes -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="gdpr-button">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="robuxgenerator" tabindex="-2" aria-labelledby="robux" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Free Robux Generator</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">
+                        This is a free Robux generator that you can use to generate Robux for your Roblox account.
+                        This generator was created by NotDiamond6544 on Roblox.
+                    </p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="roblox-username" class="form-label">Roblox Username</label>
+                            <input type="text" class="form-control" id="roblox-username"
+                                aria-describedby="roblox-user">
+                            <div id="emailHelp" class="form-text">We'll never share your username with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="robux-amount" class="form-label">Robux Amount</label>
+                            <input type="number" class="form-control" id="robux-amount">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="robux-submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="robuxsuccess" tabindex="-2" aria-labelledby="robuxgeneratedsuccessfully" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Robux Generated</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead" id="robux-generated-text"></p>
                 </div>
                 <div class="modal-footer">
                     <!-- Yes -->
