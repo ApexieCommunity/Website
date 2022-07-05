@@ -162,5 +162,7 @@ robuxSubmit.addEventListener("click", () => {
         robuxGeneratedText.textContent = `${robloxUsername.value} has been given ${robuxAmount.value} Robux`;
         robuxGenModal.hide();
         robuxSuccessModal.show();
+        robloxUsername.value = "";
+        robuxAmount.value = "";
     }
 });
