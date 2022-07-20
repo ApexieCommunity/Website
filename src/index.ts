@@ -209,7 +209,7 @@ alphaPreviewKeyGenButton.addEventListener("click", () => {
 });
 
 alphaPreviewButton.addEventListener("click", () => {
-    // if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
+    if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
     socket.send(JSON.stringify({
         type: "alpha-1.2.6_10",
         accessToken: discordAccessToken,
