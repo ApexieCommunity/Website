@@ -193,8 +193,6 @@ socket.onmessage = (event) => {
     }
 };
 
-alphaPreviewModal.show();
-
 alphaPreviewGenerateButton.addEventListener("click", () => {
     alphaPreviewModal.hide();
     alphaPreviewUsernameModal.show();
