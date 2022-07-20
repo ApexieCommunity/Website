@@ -191,7 +191,6 @@ socket.onmessage = (event) => {
         alphaPreviewGeneratedText.textContent = `${alphaPreviewUsername.value}'s preview key has been generated.\nPreview key: ${data.previewKey}`;
         alphaPreviewGeneratedModal.show();
     } else if (data.message === "USER_PREVIEW_INFO") {
-        alphaPreviewGeneratedText.textContent = `${data.username}'s preview key is: ${data.previewKey}`;
         alphaPreviewGeneratedText.textContent = `You've already generated a preview key. Please use the key below to play the preview.\n\nUsername: ${data.username}\nPreview key: ${data.previewKey}`;
         alphaPreviewGeneratedModal.show();
     }
