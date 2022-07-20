@@ -138,6 +138,9 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="#" id="alpha-preview-button">Alpha 1.2.6_10 Preview Access</a>
+                            </li>
                             <li><a class="dropdown-item disabled" href="#">Coming soon...</a></li>
                         </ul>
                     </li>
@@ -422,6 +425,94 @@
                     <!-- Yes -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="alphapreview" tabindex="-2" aria-labelledby="alphapreview" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Minecraft Alpha 1.2.6_10 Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">Minecraft Alpha 1.2.6_10 was supposed to be a preview version with new features, but these features were so controversial that it wasn't pushed as an Alpha build. Thanks to this page, you can try the found builds for yourself.</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- Yes -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="preview-generate">
+                        Generate Key
+                    </button>
+                    <!-- No -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="preview-ok">
+                        Ok
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="alphapreviewgenerated" tabindex="-2" aria-labelledby="alphapreviewgenerated" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Minecraft Alpha 1.2.6_10 Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead" id="alpha-preview-generated-text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="preview-gen-ok">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="alphapreviewnotloggedin" tabindex="-2" aria-labelledby="alphapreviewnotloggedin" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Minecraft Alpha 1.2.6_10 Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">You're not logged in.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="preview-gen-ok">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="alphapreviewusername" tabindex="-2" aria-labelledby="alphapreviewusername" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="expiredLabel">Minecraft Alpha 1.2.6_10 Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead"></p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="alpha-preview-username" class="form-label">Minecraft Username</label>
+                            <input type="text" class="form-control" id="alpha-preview-username" aria-describedby="preview-user">
+                            <div id="emailHelp" class="form-text">Choose a username that you want to use for the preview.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="preview-generate-key">
+                        Generate Key
                     </button>
                 </div>
             </div>

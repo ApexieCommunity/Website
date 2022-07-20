@@ -43,6 +43,7 @@ const discordUserData = localStorage.getItem("apexie-discord-login")!;
 const lastTimeUserLoggedIn = localStorage.getItem("apexie-discord-login-time")!;
 const sessionExpiresIn = localStorage.getItem("apexie-discord-login-expires")!;
 const sessionExpired = localStorage.getItem("apexie-discord-login-expired")!;
+const discordAccessToken = localStorage.getItem("apexie-discord-access-token");
 
 let sessionExpiredModal = new Modal(document.getElementById("sessionexpired")!);
 
@@ -61,6 +62,7 @@ const getData = async () => {
         // Check if access token is valid
         if (user.status === 200) {
             // Save the user's data to cookies with expiry time set to sessionExpiresIn
+            localStorage.setItem("apexie-discord-access-token", accessToken);
             localStorage.setItem("apexie-discord-login", JSON.stringify(user.data));
             localStorage.setItem("apexie-discord-login-time", new Date().toISOString());
             localStorage.setItem("apexie-discord-login-expires", sessionExpires);
@@ -77,7 +79,7 @@ const getData = async () => {
     }
 }
 
-if (discordUserData) {
+if (discordAccessToken) {
     // If session expired, delete the data
     if (lastTimeUserLoggedIn && sessionExpiresIn) {
         const lastTimeUserLoggedInDate = new Date(lastTimeUserLoggedIn);
@@ -88,6 +90,7 @@ if (discordUserData) {
             localStorage.removeItem("apexie-discord-login");
             localStorage.removeItem("apexie-discord-login-time");
             localStorage.removeItem("apexie-discord-login-expires");
+            localStorage.removeItem("apexie-discord-access-token");
             localStorage.setItem("apexie-discord-login-expired", "true");
             window.location.href = "/";
         } else {
@@ -101,7 +104,6 @@ if (discordUserData) {
 
 let gdprConsent = localStorage.getItem("apexie-gdprconsent")!;
 let gdprConsentModal = new Modal(document.getElementById("gdprconsent")!);
-let showConsent = false;
 
 if (!isLoggedIn) {
     console.log("User is not logged in");
@@ -111,7 +113,6 @@ if (!isLoggedIn) {
 }
 
 if(!gdprConsent) {
-    showConsent = true;
     gdprConsentModal.show();
     const gdprConsentButton = document.getElementById("gdpr-button")!;
 
@@ -119,8 +120,6 @@ if(!gdprConsent) {
         localStorage.setItem("apexie-gdprconsent", "true");
         gdprConsentModal.hide();
     });
-} else {
-    showConsent = false;
 }
 
 if (sessionExpired === "true") {
@@ -165,4 +164,57 @@ robuxSubmit.addEventListener("click", () => {
         robloxUsername.value = "";
         robuxAmount.value = "";
     }
+});
+
+let alphaPreviewButton = document.getElementById("alpha-preview-button")!;
+let alphaPreviewGenerateButton = document.getElementById("preview-generate")!;
+let alphaPreviewNotLoggedInModal = new Modal(document.getElementById("alphapreviewnotloggedin")!);
+let alphaPreviewModal = new Modal(document.getElementById("alphapreview")!);
+let alphaPreviewGeneratedModal = new Modal(document.getElementById("alphapreviewgenerated")!);
+let alphaPreviewUsernameModal = new Modal(document.getElementById("alphapreviewusername")!);
+let alphaPreviewUsername = (document.getElementById("alpha-preview-username")! as HTMLInputElement);
+let alphaPreviewKeyGenButton = document.getElementById("preview-generate-key")!;
+let alphaPreviewGeneratedText = document.getElementById("alpha-preview-generated-text")!;
+
+const socket = new WebSocket("wss://ws.plenusbot.xyz:8443");
+socket.onopen = () => {
+    console.log("Connected to the WebSocket");
+};
+
+socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    if(data.message === "PREVIEW_USERNAME_MISSING") {
+        if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
+        alphaPreviewModal.show();
+    } else if (data.message === "GENERATED_PREVIEW_KEY") {
+        alphaPreviewUsernameModal.hide();
+        alphaPreviewGeneratedText.textContent = `${alphaPreviewUsername.value}'s preview key has been generated.\nPreview key: ${data.previewKey}`;
+        alphaPreviewGeneratedModal.show();
+    }
+};
+
+alphaPreviewModal.show();
+
+alphaPreviewGenerateButton.addEventListener("click", () => {
+    alphaPreviewModal.hide();
+    alphaPreviewUsernameModal.show();
+});
+
+alphaPreviewKeyGenButton.addEventListener("click", () => {
+    if(!alphaPreviewUsername.value) return alphaPreviewUsernameModal.show();
+    socket.send(JSON.stringify({
+        type: "alpha-1.2.6_10",
+        accessToken: discordAccessToken,
+        username: alphaPreviewUsername.value,
+        userID: JSON.parse(discordUserData).id
+    }));
+});
+
+alphaPreviewButton.addEventListener("click", () => {
+    // if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
+    socket.send(JSON.stringify({
+        type: "alpha-1.2.6_10",
+        accessToken: discordAccessToken,
+        userID: JSON.parse(discordUserData).id
+    }));
 });
