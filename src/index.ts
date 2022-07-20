@@ -183,13 +183,16 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
-    console.log(data);
     if(data.message === "PREVIEW_USERNAME_MISSING") {
         if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
         alphaPreviewModal.show();
     } else if (data.message === "GENERATED_PREVIEW_KEY") {
         alphaPreviewUsernameModal.hide();
         alphaPreviewGeneratedText.textContent = `${alphaPreviewUsername.value}'s preview key has been generated.\nPreview key: ${data.previewKey}`;
+        alphaPreviewGeneratedModal.show();
+    } else if (data.message === "USER_PREVIEW_INFO") {
+        alphaPreviewGeneratedText.textContent = `${data.username}'s preview key is: ${data.previewKey}`;
+        alphaPreviewGeneratedText.textContent = `You've already generated a preview key. Please use the key below to play the preview.\n\nUsername: ${data.username}\nPreview key: ${data.previewKey}`;
         alphaPreviewGeneratedModal.show();
     }
 };
