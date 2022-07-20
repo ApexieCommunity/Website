@@ -183,6 +183,7 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
+    console.log(data);
     if(data.message === "PREVIEW_USERNAME_MISSING") {
         if(!isLoggedIn) return alphaPreviewNotLoggedInModal.show();
         alphaPreviewModal.show();
