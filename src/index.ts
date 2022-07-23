@@ -175,6 +175,7 @@ let alphaPreviewUsernameModal = new Modal(document.getElementById("alphapreviewu
 let alphaPreviewUsername = (document.getElementById("alpha-preview-username")! as HTMLInputElement);
 let alphaPreviewKeyGenButton = document.getElementById("preview-generate-key")!;
 let alphaPreviewGeneratedText = document.getElementById("alpha-preview-generated-text")!;
+let alphaPreviewDownloadButton = document.getElementById("preview-download")!;
 
 const socket = new WebSocket("wss://ws.plenusbot.xyz:8443");
 socket.onopen = () => {
@@ -218,4 +219,8 @@ alphaPreviewButton.addEventListener("click", () => {
         accessToken: discordAccessToken,
         userID: JSON.parse(discordUserData).id
     }));
+});
+
+alphaPreviewDownloadButton.addEventListener("click", () => {
+    window.location.href = "https://github.com/ApexieCommunity/Website/raw/main/downloads/Alpha 1.2.6_10.zip";
 });
